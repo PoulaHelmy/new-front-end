@@ -1,0 +1,49 @@
+
+.active
+{
+    color: royalblue !important;
+}
+.navlink{
+    font-size: 24px;
+    color: black;
+    font-family: Big_Shoulders_Display;
+
+}
+.findmeLogo{
+    font-family: Big_Shoulders_Display;
+    font-size: 40px;
+    cursor: pointer;
+    
+    font-weight: bold;
+}
+
+.findmeLogo img{
+    width: 8%;
+    height: 8%;
+}
+
+
+@media screen and (max-width:768px)
+{
+
+    nav
+    {
+        background-color: white !important;
+    } 
+
+}
+/*--------------------------------------------------*/
+@media screen and (max-width:600px)
+{
+
+    nav
+    {
+        background-color: white !important;
+    } 
+
+}
+
+
+
+
+

@@ -1,0 +1,63 @@
+@import "~@angular/material/theming";
+
+@include mat-core();
+@import "./themes/themes.scss";
+
+@import "./themes/my-light-theme.scss";
+@import "./themes/my-dark-theme.scss";
+@import "./themes/custom-compontent.scss";
+@import "./themes/findme-theme.scss";
+
+.my-theme {
+  @include angular-material-theme($my-theme);
+  @include custom-components-theme($my-theme);
+}
+
+.my-light-theme {
+  @include angular-material-theme($my-light-theme);
+  @include custom-components-theme($my-light-theme);
+}
+
+.my-dark-theme {
+  @include angular-material-theme($my-dark-theme);
+  @include custom-components-theme($my-dark-theme);
+}
+.findme-theme {
+  @include angular-material-theme($findme-theme);
+  @include custom-components-theme($findme-theme);
+}
+
+@import "~bootstrap/scss/bootstrap";
+
+@import "~ngx-toastr/toastr";
+
+@font-face {
+  font-family: Big_Shoulders_Display;
+  src: url(assets/fonts/Big_Shoulders_Display/BigShouldersDisplay-Regular.ttf)
+    format("opentype");
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: Big_Shoulders_Display;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+h2 {
+  font-size: 40px;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
