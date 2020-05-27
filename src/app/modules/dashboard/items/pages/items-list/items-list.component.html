@@ -36,7 +36,7 @@
             aria-label="Show Item"
             matTooltip="Show Item"
             matTooltipPosition="right"
-            [routerLink]="['/items/view', row.id]"
+            [routerLink]="['..', 'view', row.id]"
             routerLinkActive="router-link-active"
           >
             {{ row.id }}
@@ -87,7 +87,7 @@
               aria-label="Update Item"
               matTooltip="Update Item"
               matTooltipPosition="right"
-              [routerLink]="['/items/update', row.id]"
+              [routerLink]="['update', row.id]"
               fragment="items"
               routerLinkActive="router-link-active"
             >
@@ -100,7 +100,7 @@
               aria-label="Make Request"
               matTooltip="Claim This Item"
               matTooltipPosition="right"
-              [routerLink]="['/requests/create', row.id]"
+              [routerLink]="['create', row.id]"
               routerLinkActive="router-link-active"
             >
               <mat-icon>fingerprint</mat-icon>

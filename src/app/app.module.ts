@@ -11,7 +11,6 @@ import { AuthModule } from 'app/@auth/auth.module';
 import { ToastrModule } from 'ngx-toastr';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
-
 @NgModule({
   declarations: [AppComponent],
   imports: [

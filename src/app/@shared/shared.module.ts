@@ -20,15 +20,14 @@ import { RadiobuttonComponent } from './pages/dynamicForms/radiobutton.component
 import { CheckboxComponent } from './pages/dynamicForms/checkbox.component';
 import { DynamicFieldDirective } from './directives/dynamic-field/dynamic-field.directive';
 import { DynamicFormComponent } from './pages/dynamicForms/dynamic-form/dynamic-form.component';
-import { AuthLayoutComponent } from '@@shared/layouts/auth-layout/auth-layout.component';
-import { BlankLayoutComponent } from '@@shared/layouts/blank-layout/blank-layout.component';
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { BlankLayoutComponent } from './layouts/blank-layout/blank-layout.component';
 import { MainNavComponent } from './layouts/main-nav/main-nav.component';
+
 @NgModule({
   declarations: [
     NotFoundComponent,
     FilterPipePipe,
-    AuthLayoutComponent,
-    BlankLayoutComponent,
     ConfirmDialogComponent,
     SnackbarComponent,
     InputComponent,
@@ -39,6 +38,8 @@ import { MainNavComponent } from './layouts/main-nav/main-nav.component';
     CheckboxComponent,
     DynamicFieldDirective,
     DynamicFormComponent,
+    AuthLayoutComponent,
+    BlankLayoutComponent,
     MainNavComponent,
   ],
   imports: [
@@ -50,8 +51,6 @@ import { MainNavComponent } from './layouts/main-nav/main-nav.component';
     HttpClientModule,
   ],
   exports: [
-    AuthLayoutComponent,
-    BlankLayoutComponent,
     MaterialModule,
     NotFoundComponent,
     FilterPipePipe,
@@ -65,6 +64,8 @@ import { MainNavComponent } from './layouts/main-nav/main-nav.component';
     CheckboxComponent,
     DynamicFieldDirective,
     DynamicFormComponent,
+    AuthLayoutComponent,
+    BlankLayoutComponent,
     MainNavComponent,
   ],
   providers: [ConfirmDialogService],
