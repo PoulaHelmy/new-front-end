@@ -6,7 +6,6 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { SharedModule } from '@@shared/shared.module';
 import { MaterialModule } from '@@shared/material/material.module';
 import { DashboardRoutingModule } from './dashboard-routing.module';
-import { ItemsModule } from './items/items.module';
 @NgModule({
   declarations: [],
   imports: [
@@ -17,9 +16,8 @@ import { ItemsModule } from './items/items.module';
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    ItemsModule,
   ],
-  exports: [ItemsModule],
+  exports: [],
   providers: [
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,

@@ -158,7 +158,7 @@ export class ItemsUpdateComponent implements OnInit, OnDestroy {
             (next) => {
               this.isLoadingResults = false;
               this.snackbarService.show('Item Updated successfully', 'success');
-              this.router.navigateByUrl('/items/upoptions', {
+              this.router.navigateByUrl('/dashboard/items/upoptions', {
                 state: {
                   id: this.subcat,
                   item_id: this.itemID,

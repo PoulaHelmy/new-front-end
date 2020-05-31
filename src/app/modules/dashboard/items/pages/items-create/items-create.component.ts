@@ -157,7 +157,7 @@ export class ItemsCreateComponent implements OnInit, OnDestroy {
             .then((next) => {
               this.isLoadingResults = false;
               this.snackbarService.show('Item Created successfully', 'success');
-              this.router.navigateByUrl('/items/options', {
+              this.router.navigateByUrl('/dashboard/items/options', {
                 state: {
                   id: next['data']['subcat_id'],
                   item_id: next['data']['id'],

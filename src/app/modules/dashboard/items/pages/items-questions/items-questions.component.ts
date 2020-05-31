@@ -68,7 +68,7 @@ export class ItemsQuestionsComponent implements OnInit, OnDestroy {
       .then((next) => {
         console.log('res : :  :', next);
         this.snackbarService.show(next['message'], 'success');
-        this.router.navigate(['items']);
+        this.router.navigate(['/dashboard/items']);
       })
       .catch((err) => {
         this.snackbarService.show('Error', 'danger');

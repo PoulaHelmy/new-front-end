@@ -85,9 +85,10 @@ export class MainNavComponent implements OnInit {
         .toPromise()
         .then((res) => {
           localStorage.removeItem('access_token');
+          this.authService.setIsAuthenticated(false);
           localStorage.setItem('isAuth', 'false');
           this.snackbar.show('Logged Out Successfully', 'success');
-          this.router.navigate(['/auth/login']);
+          this.router.navigate(['/home']);
         })
         .catch((err) => {
           this.snackbar.show(err['error']['message'], 'danger');

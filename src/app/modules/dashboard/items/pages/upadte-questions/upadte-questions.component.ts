@@ -82,7 +82,7 @@ export class UpadteQuestionsComponent implements OnInit, OnDestroy {
       .toPromise()
       .then((next) => {
         this.snackbarService.show(next['message'], 'success');
-        this.router.navigate(['items']);
+        this.router.navigate(['/dashboard/items']);
       })
       .catch((err) => {
         this.snackbarService.show('Error', 'danger');

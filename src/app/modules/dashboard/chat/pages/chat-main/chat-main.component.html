@@ -1,0 +1,47 @@
+<div
+  class="position-relative"
+  *ngFor="let user of searchableList"
+  (click)="showChat(user.firebaseId, $event); getChat(user.firebaseId)"
+>
+  <div
+    class="overlay"
+    *ngIf="
+      messagesList[user.firebaseId]['meta-data']?.agent &&
+      !(messagesList[user.firebaseId]['meta-data']?.agent?.name == '')
+    "
+  >
+    <p class="overlay-text">
+      {{ messagesList[user.firebaseId]["meta
+    -data"]?.agent?.name }} is
+      typing...
+    </p>
+  </div>
+  <div class="messages-section row cp m-0 px-2">
+    <div
+      class="col-2 px-0 prof-img"
+      [ngStyle]="{
+        background:
+          'url(' + user?.profileImage ||
+          '../../../../assets/images/user.svg' + ')',
+        'background-position': 'center',
+        'background-size': 'cover'
+      }"
+    ></div>
+    <div class="col-10 align-self-center">
+      <p class="name">{{ user?.name }}</p>
+      <p
+        class="message"
+        [ngClass]="
+          messagesList[user.firebaseId]['meta-data']?.user.new
+            ? 'bold-text'
+            : ''
+        "
+      >
+        {{ getLatestMessage(messagesList[user.firebaseId]) }}
+      </p>
+      <p class="message text-right">
+        {{ getLatestMessageTime(messagesList[user.firebaseId]) | timeAgo }}
+      </p>
+    </div>
+  </div>
+</div>

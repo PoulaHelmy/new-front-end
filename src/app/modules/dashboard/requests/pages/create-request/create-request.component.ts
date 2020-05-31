@@ -9,6 +9,7 @@ import {
 import { SnackbarService } from '@@shared/pages/snackbar/snackbar.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ItemsService } from '@@core/services/items.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-create-request',
@@ -21,6 +22,8 @@ export class CreateRequestComponent implements OnInit, OnDestroy {
   questionItem: FormGroup;
   data: {};
   newData = [];
+  subscription$: Subscription;
+
   constructor(
     private fb: FormBuilder,
     private snackbarService: SnackbarService,
@@ -30,7 +33,7 @@ export class CreateRequestComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.actRoute.data.subscribe((res) => {
+    this.subscription$ = this.actRoute.data.subscribe((res) => {
       this.item_id = res['item'][0]['item_id'];
       this.data = res['item'][0]['data'];
     });
@@ -43,6 +46,8 @@ export class CreateRequestComponent implements OnInit, OnDestroy {
     for (let i = 0; i < Object.keys(this.data).length; i++) {
       this.addQuestion();
       this.getquestions().at(i).patchValue(this.data[i]['name']);
+      this.getquestions().at(i).get('question').disable();
+
       this.newData.push({
         question: this.data[i]['name'],
         answer: '',
@@ -74,17 +79,18 @@ export class CreateRequestComponent implements OnInit, OnDestroy {
   /**************** Submit Function************************/
 
   onSubmit() {
-    console.log('Form Data', this.requestForm.value);
     this.itemsService
-      .addItem(this.requestForm.value, 'requests')
+      .addItem(this.requestForm.getRawValue(), 'requests')
       .toPromise()
       .then((next) => {
         this.snackbarService.show(next['message'], 'success');
-        this.router.navigate(['requests']);
+        this.router.navigate(['/dashboard/requests']);
       })
       .catch((err) => {
         this.snackbarService.show(err['error']['message'], 'danger');
       });
   }
-  ngOnDestroy() {}
+  ngOnDestroy() {
+    this.subscription$.unsubscribe();
+  }
 } //end of Class

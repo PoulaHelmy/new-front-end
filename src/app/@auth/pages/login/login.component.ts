@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       )
       .subscribe(
         (res: any) => {
+          this.authService.setIsAuthenticated(true);
           localStorage.setItem('access_token', res['data']['token']);
           localStorage.setItem('isAuth', 'true');
           this.authService.isLoggedIn.pipe(

@@ -29,12 +29,12 @@ const routes: Routes = [
       },
     ],
   },
-  // {
-  //   path: 'auth',
-  //   loadChildren: () =>
-  //     import('app/@auth/auth.module').then((m) => m.AuthModule),
-  //   canActivateChild: [GuestGuardService],
-  // },
+  {
+    path: 'auth',
+    loadChildren: () =>
+      import('app/@auth/auth.module').then((m) => m.AuthModule),
+    canActivateChild: [GuestGuardService],
+  },
 ];
 
 @NgModule({

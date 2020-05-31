@@ -70,7 +70,9 @@ export class UpdateOptionsComponent implements OnInit, OnDestroy {
             'Item Details Updated successfully',
             'success'
           );
-          this.router.navigate(['items/upquestions/' + this.item_id]);
+          this.router.navigate([
+            '/dashboard/items/upquestions/' + this.item_id,
+          ]);
         },
         (err) => {
           console.log('err :', err);

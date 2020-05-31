@@ -47,10 +47,34 @@
           >Contact</a
         >
       </li>
-      <li class="nav-item">
+
+      <li class="nav-item" *ngIf="!(isAuthenticated$ | async)">
         <a class="navlink mx-2" routerLink="../auth">Login</a>
+      </li>
+      <li class="nav-item" *ngIf="isAuthenticated$ | async">
+        <a class="navlink mx-2" routerLink="../dashboard">Dashboard</a>
+      </li>
+      <li class="nav-item" *ngIf="isAuthenticated$ | async">
+        <a class="navlink mx-2" routerLink="" (click)="logout()">Logout</a>
       </li>
     </ul>
   </div>
 </nav>
 <router-outlet></router-outlet>
+
+<!-- <span>
+  <button *ngIf="isAuthenticated$ | async" mat-mini-fab (click)="sidenav?.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="logo">
+    <img src="assets/logo.png" alt="Logo">
+  </span>
+  <span class="title">
+    {{ title }}
+  </span>
+</span>
+<span class="spacer"></span>
+<button *ngIf="isAuthenticated$ | async" (click)="logout()" class="login" mat-mini-fab>
+  <mat-icon>person</mat-icon>
+</button>
+</span> -->

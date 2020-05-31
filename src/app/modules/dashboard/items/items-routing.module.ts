@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { InputsSubcatsComponent } from './pages/inputs-subcats/inputs-subcats.component';
 import { ItemsCreateComponent } from './pages/items-create/items-create.component';
 import { ItemsOptionsComponent } from './pages/items-options/items-options.component';
 import { ItemsListComponent } from './pages/items-list/items-list.component';
@@ -27,6 +26,11 @@ const routes: Routes = [
   },
   {
     path: 'view/:id',
+    component: ItemDetailsComponent,
+    resolve: { item: ItemDetailsResolver },
+  },
+  {
+    path: 'show/:id',
     component: ItemDetailsComponent,
     resolve: { item: ItemDetailsResolver },
   },
@@ -59,15 +63,11 @@ const routes: Routes = [
     component: UpadteQuestionsComponent,
     resolve: { item: ItemUpdateQuestionsResolver },
   },
+
   {
-    path: 'inputscats',
-    component: InputsSubcatsComponent,
-    resolve: { allSubCats: AllSubCatResolver },
+    path: '**',
+    component: NotFoundComponent,
   },
-  // {
-  //   path: '**',
-  //   component: NotFoundComponent,
-  // },
 ];
 
 @NgModule({

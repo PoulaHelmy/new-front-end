@@ -22,13 +22,6 @@
                 <tr>
                   <th scope="row">1</th>
                   <td>
-                    ID
-                  </td>
-                  <td>{{ itemDetails["id"] }}</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>
                     Item Status
                   </td>
                   <td>
@@ -36,42 +29,42 @@
                   </td>
                 </tr>
                 <tr>
-                  <th scope="row">3</th>
+                  <th scope="row">2</th>
                   <td>
                     Name
                   </td>
                   <td>{{ itemDetails["name"] }}</td>
                 </tr>
                 <tr>
-                  <th scope="row">4</th>
+                  <th scope="row">3</th>
                   <td>
                     Category
                   </td>
                   <td>{{ itemDetails["category"] }}</td>
                 </tr>
                 <tr>
-                  <th scope="row">5</th>
+                  <th scope="row">4</th>
                   <td>
                     SubCategory
                   </td>
                   <td>{{ itemDetails["subcat"] }}</td>
                 </tr>
                 <tr>
-                  <th scope="row">6</th>
+                  <th scope="row">5</th>
                   <td>
                     Location
                   </td>
                   <td>{{ itemDetails["location"] }}</td>
                 </tr>
                 <tr>
-                  <th scope="row">7</th>
+                  <th scope="row">6</th>
                   <td>
                     Description
                   </td>
                   <td>{{ itemDetails["description"] }}</td>
                 </tr>
                 <tr>
-                  <th scope="row">8</th>
+                  <th scope="row">7</th>
                   <td>
                     Date
                   </td>
@@ -83,7 +76,7 @@
                     let i = index
                   "
                 >
-                  <th scope="row">{{ i + 9 }}</th>
+                  <th scope="row">{{ i + 8 }}</th>
                   <td>{{ option[0]["name"] }}</td>
                   <td>{{ option[0]["value"] }}</td>
                 </tr>
@@ -94,7 +87,7 @@
                   "
                 >
                   <th scope="row">
-                    {{ i + 9 + itemDetails["optionsCount"] }}
+                    {{ i + 8 + itemDetails["optionsCount"] }}
                   </th>
                   <td>Question# {{ i + 1 }}</td>
                   <td>{{ question[0]["name"] }}</td>
@@ -103,7 +96,7 @@
                   <th scope="row">
                     {{
                       i +
-                        9 +
+                        8 +
                         +itemDetails["questionsCount"] +
                         itemDetails["optionsCount"]
                     }}
@@ -122,7 +115,7 @@
                 <tr>
                   <th scope="row">
                     {{
-                      9 +
+                      8 +
                         itemDetails["questionsCount"] +
                         itemDetails["imagesCount"] +
                         itemDetails["optionsCount"]
@@ -136,7 +129,7 @@
                 <tr>
                   <th scope="row">
                     {{
-                      10 +
+                      9 +
                         itemDetails["questionsCount"] +
                         itemDetails["imagesCount"] +
                         itemDetails["optionsCount"]
@@ -165,10 +158,30 @@
                         aria-label="Update Item"
                         matTooltip="Update Item"
                         matTooltipPosition="right"
-                        [routerLink]="['/items/update', itemDetails['id']]"
+                        [routerLink]="[
+                          '/dashboard/items/update',
+                          itemDetails['id']
+                        ]"
                         routerLinkActive="router-link-active"
                       >
                         <mat-icon>settings</mat-icon>
+                      </button>
+
+                      <button
+                        *ngIf="isRequested"
+                        class="matBtn"
+                        mat-icon-button
+                        color="warn"
+                        aria-label="Update Item"
+                        matTooltip="Update Item"
+                        matTooltipPosition="right"
+                        [routerLink]="[
+                          '/dashboard/requests/create',
+                          itemDetails['id']
+                        ]"
+                        routerLinkActive="router-link-active"
+                      >
+                        <mat-icon>fingerprint</mat-icon>
                       </button>
                     </div>
                   </td>

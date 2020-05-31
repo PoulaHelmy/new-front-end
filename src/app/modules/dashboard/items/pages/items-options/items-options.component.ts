@@ -80,7 +80,7 @@ export class ItemsOptionsComponent implements OnInit, OnDestroy {
             'Item Details Created successfully',
             'success'
           );
-          this.router.navigate(['items/questions/' + this.item_id]);
+          this.router.navigate(['/dashboard/items/questions/' + this.item_id]);
         },
         (err) => {
           console.log('err :', err);

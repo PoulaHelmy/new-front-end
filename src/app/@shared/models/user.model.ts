@@ -3,7 +3,10 @@ export interface UserDto {
   age: string;
   complete: boolean;
 }
-
+export interface userInfo {
+  email: string;
+  password: string;
+}
 export class User {
   public id: number;
   public name: string;
@@ -14,7 +17,7 @@ export class User {
     { name, age, complete }: UserDto = {
       name: null,
       age: null,
-      complete: false
+      complete: false,
     }
   ) {
     this.id = 0;
@@ -22,15 +25,7 @@ export class User {
     this.age = age;
     this.complete = complete;
   }
-
-
-
 }
-
-
-
-
-
 
 // private url='http://pizzaService';
 // private endpoint = 'pizzas';

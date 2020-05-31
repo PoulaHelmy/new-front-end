@@ -7,8 +7,6 @@ import { MaterialModule } from 'app/@shared/material/material.module';
 import { SharedModule } from '@@shared/shared.module';
 
 import { ItemsRoutingModule } from './items-routing.module';
-import { TestDynamicFormComponent } from './pages/test-dynamic-form/test-dynamic-form.component';
-import { InputsSubcatsComponent } from './pages/inputs-subcats/inputs-subcats.component';
 import { ItemsCreateComponent } from './pages/items-create/items-create.component';
 import { ItemsUpdateComponent } from './pages/items-update/items-update.component';
 import { ItemsListComponent } from './pages/items-list/items-list.component';
@@ -22,8 +20,6 @@ import { UpadteQuestionsComponent } from './pages/upadte-questions/upadte-questi
 
 @NgModule({
   declarations: [
-    TestDynamicFormComponent,
-    InputsSubcatsComponent,
     ItemsCreateComponent,
     ItemsUpdateComponent,
     ItemsListComponent,
@@ -43,8 +39,6 @@ import { UpadteQuestionsComponent } from './pages/upadte-questions/upadte-questi
     ItemsRoutingModule,
   ],
   exports: [
-    TestDynamicFormComponent,
-    InputsSubcatsComponent,
     ItemsCreateComponent,
     ItemsUpdateComponent,
     ItemsListComponent,

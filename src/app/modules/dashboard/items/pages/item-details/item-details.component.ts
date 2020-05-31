@@ -12,6 +12,7 @@ import { ConfirmDialogService } from '@@shared/pages/dialogs/confirm-dialog/conf
 })
 export class ItemDetailsComponent implements OnInit, OnDestroy {
   subscription1$: Subscription;
+  isRequested: boolean = false;
   itemDetails;
   options = {
     title: 'Are Sure To Delete This Item',
@@ -32,10 +33,12 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
     this.subscription1$ = this.activatedRoute.data.subscribe((res) => {
       this.itemDetails = res['item'];
     });
+
+    this.isRequested = this.router.url.includes('show');
+    console.log('url', this.isRequested);
   }
 
   deleteItem(id: number) {
-    console.log('id  :', id);
     this.dialogService.open(this.options);
     this.dialogService.confirmed().subscribe((confirmed) => {
       if (confirmed) {

@@ -9,7 +9,21 @@ export class AuthService {
   endPoint: string = 'auth';
   options: any;
   private loggedIn = new BehaviorSubject<boolean>(false); // {1}
+  /*---------------------------------------------------------- */
 
+  private isAuthenticated = new BehaviorSubject(
+    this.getIsAuthenticated() || false
+  );
+  isAuthenticated$ = this.isAuthenticated.asObservable();
+  getIsAuthenticated(): boolean {
+    return localStorage.getItem('access_token') ? true : false;
+  }
+
+  setIsAuthenticated(isAuthenticated: boolean) {
+    this.isAuthenticated.next(isAuthenticated);
+  }
+
+  /*---------------------------------------------------------- */
   constructor(private http: HttpClient) {
     this.options = {
       headers: new HttpHeaders({
