@@ -3,7 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay, startWith } from 'rxjs/operators';
 import { AuthService } from 'app/@auth/services/auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { SnackbarService } from '@@shared/pages/snackbar/snackbar.service';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { FormControl } from '@angular/forms';
@@ -17,7 +17,8 @@ import { ItemsService } from '@@core/services/items.service';
 })
 export class MainNavComponent implements OnInit {
   @Input() themeColor = '';
-
+  userDetails;
+  defImg = '../../../../assets/imgs/undraw_profile_pic_ic5t.svg';
   isDarkTheme: Observable<boolean>;
 
   themeClass: string = 'findme-theme';
@@ -38,7 +39,8 @@ export class MainNavComponent implements OnInit {
     private router: Router,
     private snackbar: SnackbarService,
     private overlayContainer: OverlayContainer,
-    private itemServ: ItemsService
+    private itemServ: ItemsService,
+    private actRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -55,17 +57,18 @@ export class MainNavComponent implements OnInit {
     overlayContainerClasses.add('my-theme');
     //////////////////////////////////////////////////////////
     this.myControl.valueChanges.subscribe((res) => {
-      console.log('res of input : ', res);
-
       if (res !== '' && res !== null && res !== ' ') {
         this.filteredOptions = this.itemServ.getFilters(
           res !== '' ? res : 'nosearch'
         );
-        console.log(' this.filteredOptions ', this.filteredOptions);
       }
     });
 
     //////////////////////////////////////////////////////////
+
+    this.actRoute.data.subscribe((res) => {
+      this.userDetails = res['item'];
+    });
   }
   // toggleDarkTheme(checked: boolean) {
   //   this.themeService.setDarkTheme(checked);

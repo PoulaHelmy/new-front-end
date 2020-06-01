@@ -1,10 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MainNavComponent } from '@@shared/layouts/main-nav/main-nav.component';
-import { ItemsListComponent } from './items/pages/items-list/items-list.component';
-import { RequestsComponent } from './requests/pages/requests/requests.component';
+import { NotFoundComponent } from '@@shared/pages/not-found/not-found.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    loadChildren: () =>
+      import('app/modules/dashboard/user-dashboard/user-dashboard.module').then(
+        (m) => m.UserDashboardModule
+      ),
+    pathMatch: 'full',
+  },
   {
     path: 'items',
     loadChildren: () =>
@@ -18,6 +24,24 @@ const routes: Routes = [
       import('app/modules/dashboard/requests/requests.module').then(
         (m) => m.RequestsModule
       ),
+  },
+  {
+    path: 'account',
+    loadChildren: () =>
+      import('app/modules/dashboard/account/account.module').then(
+        (m) => m.AccountModule
+      ),
+  },
+  {
+    path: 'increquests',
+    loadChildren: () =>
+      import(
+        'app/modules/dashboard/incoming-requests/incoming-requests.module'
+      ).then((m) => m.IncomingRequestsModule),
+  },
+  {
+    path: '**',
+    component: NotFoundComponent,
   },
 ];
 

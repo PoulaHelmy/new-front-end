@@ -12,17 +12,15 @@ import { SnackbarComponent } from './pages/snackbar/snackbar.component';
 import { InputComponent } from './pages/dynamicForms/input.component';
 import { ButtonComponent } from './pages/dynamicForms/button.component';
 import { DateComponent } from './pages/dynamicForms/date.component';
-
 import { SelectComponent } from './pages/dynamicForms/select.component';
-
 import { RadiobuttonComponent } from './pages/dynamicForms/radiobutton.component';
-
 import { CheckboxComponent } from './pages/dynamicForms/checkbox.component';
 import { DynamicFieldDirective } from './directives/dynamic-field/dynamic-field.directive';
 import { DynamicFormComponent } from './pages/dynamicForms/dynamic-form/dynamic-form.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { BlankLayoutComponent } from './layouts/blank-layout/blank-layout.component';
 import { MainNavComponent } from './layouts/main-nav/main-nav.component';
+import { ImgDefualtPipe } from './pipes/img-defualt.pipe';
 
 @NgModule({
   declarations: [
@@ -41,6 +39,7 @@ import { MainNavComponent } from './layouts/main-nav/main-nav.component';
     AuthLayoutComponent,
     BlankLayoutComponent,
     MainNavComponent,
+    ImgDefualtPipe,
   ],
   imports: [
     CommonModule,
@@ -67,6 +66,7 @@ import { MainNavComponent } from './layouts/main-nav/main-nav.component';
     AuthLayoutComponent,
     BlankLayoutComponent,
     MainNavComponent,
+    ImgDefualtPipe,
   ],
   providers: [ConfirmDialogService],
   entryComponents: [

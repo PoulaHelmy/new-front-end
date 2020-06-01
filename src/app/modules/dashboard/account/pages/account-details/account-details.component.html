@@ -1,0 +1,17 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{
+      userDetails["name"] ? userDetails["name"] : ""
+    }}</mat-card-title>
+    <mat-card-subtitle>{{ userDetails["email"] }}</mat-card-subtitle>
+  </mat-card-header>
+  <img matCardImage [src]="userDetails['photo'] | imgDefualt: defImg" />
+  <mat-card-content>
+    Phone Number : {{ userDetails["phone"] }}
+  </mat-card-content>
+  <mat-card-actions align="start">
+    <button mat-button [routerLink]="['/dashboard/account/update']">
+      Update
+    </button>
+  </mat-card-actions>
+</mat-card>

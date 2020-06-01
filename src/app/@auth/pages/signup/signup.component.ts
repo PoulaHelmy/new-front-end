@@ -42,7 +42,7 @@ export class SignupComponent implements OnInit, OnDestroy {
       ]),
       phone: new FormControl(null, [
         Validators.required,
-        Validators.pattern('[0-9 ]{12}'),
+        Validators.pattern('[0-9 ]{11}'),
         // Validators.minLength(11),
       ]),
       password: new FormControl(null, [

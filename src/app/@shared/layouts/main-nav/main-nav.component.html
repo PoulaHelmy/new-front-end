@@ -8,8 +8,17 @@
     [opened]="(isHandset$ | async) === false"
   >
     <mat-toolbar class="sidenav-toolbar" color="primary">
-      <div>
-        Menu
+      <div class="user-details m-auto text-center py-2">
+        <div class="avatar-img">
+          <img
+            [src]="userDetails['photo'] | imgDefualt: defImg"
+            class="img-fluid rounded-circle"
+            alt="userDetails['name'] photo"
+            height="75px"
+            width="75px"
+          />
+        </div>
+        <h3>{{ userDetails["name"] }}</h3>
       </div>
     </mat-toolbar>
 
@@ -26,7 +35,13 @@
       >
       <mat-list-item routerLink="/dashboard/requests" routerLinkActive="active"
         ><mat-icon color="primary">compare_arrows</mat-icon
-        ><span class="mx-2">Requests</span></mat-list-item
+        ><span class="mx-2">My Requests</span></mat-list-item
+      >
+      <mat-list-item
+        routerLink="/dashboard/increquests"
+        routerLinkActive="active"
+        ><mat-icon color="primary">swap_vert</mat-icon
+        ><span class="mx-2">Incoming Requests</span></mat-list-item
       >
       <mat-list-item routerLink="requests" routerLinkActive="active"
         ><mat-icon color="primary">done_all</mat-icon
@@ -124,7 +139,7 @@
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu2="matMenu">
-          <button mat-menu-item>
+          <button mat-menu-item [routerLink]="['/dashboard/account']">
             <span>Account</span>
           </button>
           <button mat-menu-item (click)="logout()">

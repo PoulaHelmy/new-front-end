@@ -3,22 +3,24 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { MaterialModule } from 'app/@shared/material/material.module';
 import { SharedModule } from '@@shared/shared.module';
-import { MaterialModule } from '@@shared/material/material.module';
-import { DashboardRoutingModule } from './dashboard-routing.module';
-import { AccountUpdateComponent } from './account/pages/account-update/account-update.component';
+
+import { IncomingRequestsRoutingModule } from './incoming-requests-routing.module';
+import { IncRequestsComponent } from './pages/inc-requests/inc-requests.component';
+import { IncRequestsDetailsComponent } from './pages/inc-requests-details/inc-requests-details.component';
+
 @NgModule({
-  declarations: [AccountUpdateComponent],
+  declarations: [IncRequestsComponent, IncRequestsDetailsComponent],
   imports: [
     CommonModule,
-    DashboardRoutingModule,
-    MaterialModule,
+    IncomingRequestsRoutingModule,
     HttpClientModule,
     SharedModule,
+    MaterialModule,
     FormsModule,
     ReactiveFormsModule,
   ],
-  exports: [],
   providers: [
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
@@ -26,4 +28,4 @@ import { AccountUpdateComponent } from './account/pages/account-update/account-u
     },
   ],
 })
-export class DashboardModule {}
+export class IncomingRequestsModule {}

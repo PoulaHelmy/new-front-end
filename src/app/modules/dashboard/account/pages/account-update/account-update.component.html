@@ -1,0 +1,168 @@
+<div class="container my-4">
+  <div class="row justify-content-center">
+    <mat-card class="example-card w-75">
+      <mat-card-header>
+        <mat-card-title>Item Control</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="example-loading-shade" *ngIf="isLoadingResults">
+          <mat-spinner *ngIf="isLoadingResults">
+            Uploadind....
+          </mat-spinner>
+        </div>
+        <div class="tags-form">
+          <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+            <!------------------------ Name-------------------------->
+            <p>
+              <mat-form-field appearance="outline" class="w-75">
+                <mat-label>Name</mat-label>
+                <input
+                  matInput
+                  formControlName="name"
+                  placeholder="Enter Input Name"
+                />
+                <mat-icon matSuffix *ngIf="!userForm.controls.name.errors"
+                  >sentiment_very_satisfied</mat-icon
+                >
+                <mat-icon matSuffix *ngIf="userForm.controls.name.errors"
+                  >sentiment_dissatisfied</mat-icon
+                >
+                <mat-hint
+                  align="end"
+                  *ngIf="
+                    userForm.controls.name.errors?.required &&
+                    userForm.controls.name.touched
+                  "
+                  >This Field Is Required</mat-hint
+                >
+                <mat-hint
+                  align="end"
+                  *ngIf="userForm.controls.name.errors?.minlength"
+                  >Min Length Is 3 Characters</mat-hint
+                >
+              </mat-form-field>
+            </p>
+            <!------------------------ Email-------------------------->
+
+            <p>
+              <mat-form-field appearance="outline" class="w-75">
+                <mat-label>Email</mat-label>
+                <input
+                  matInput
+                  formControlName="email"
+                  placeholder="Enter Input Email"
+                />
+                <mat-icon matSuffix *ngIf="!userForm.controls.email.errors"
+                  >sentiment_very_satisfied</mat-icon
+                >
+                <mat-icon matSuffix *ngIf="userForm.controls.email.errors"
+                  >sentiment_dissatisfied</mat-icon
+                >
+                <mat-hint
+                  align="end"
+                  *ngIf="
+                    userForm.controls.email.errors?.required &&
+                    userForm.controls.email.touched
+                  "
+                  >This Field Is Required</mat-hint
+                >
+                <mat-hint
+                  align="end"
+                  *ngIf="userForm.controls.email.errors?.pattern"
+                  >The Email Format Is InValid</mat-hint
+                >
+              </mat-form-field>
+            </p>
+            <!------------------------ Phone-------------------------->
+            <p>
+              <mat-form-field appearance="outline" class="w-75">
+                <mat-label>Phone</mat-label>
+                <input
+                  matInput
+                  formControlName="phone"
+                  placeholder="Enter Input Phone Number"
+                />
+                <mat-icon matSuffix *ngIf="!userForm.controls.phone.errors"
+                  >sentiment_very_satisfied</mat-icon
+                >
+                <mat-icon matSuffix *ngIf="userForm.controls.phone.errors"
+                  >sentiment_dissatisfied</mat-icon
+                >
+                <mat-hint
+                  align="end"
+                  *ngIf="
+                    userForm.controls.phone.errors?.required &&
+                    userForm.controls.phone.touched
+                  "
+                  >This Field Is Required</mat-hint
+                >
+                <mat-hint
+                  align="end"
+                  *ngIf="userForm.controls.phone.errors?.pattern"
+                  >The Phone Format Is InValid</mat-hint
+                >
+              </mat-form-field>
+            </p>
+
+            <!------------------------ Images-------------------------->
+            <div class="">
+              <div class="" *ngIf="isLoadingImages">
+                <mat-progress-bar mode="query"></mat-progress-bar>
+              </div>
+              <label for="file" style="margin-right: 10px;">File</label>
+              <input
+                formControlName="file"
+                style="display: none;"
+                id="file"
+                type="file"
+                #inputFile
+                (change)="onFileChange($event)"
+              />
+              <button
+                mat-flat-button
+                type="button"
+                color="primary"
+                (click)="inputFile.click()"
+              >
+                Upload Profile Picture
+              </button>
+              <mat-hint
+                align="end"
+                *ngIf="
+                  userForm.controls.file.errors?.required &&
+                  userForm.controls.file.touched
+                "
+                >This Field Is Required</mat-hint
+              >
+              <div class="container">
+                <div class="row justify-content-center">
+                  <ng-container *ngFor="let url of images">
+                    <div class="col-md-4 my-2">
+                      <img
+                        [src]="url"
+                        class="img-fluid"
+                        style="max-width: 150px; max-height: 200px;"
+                      />
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+            <!-- [disabled]="userForm.valid" -->
+
+            <mat-card-actions>
+              <button
+                mat-raised-button
+                type="submit"
+                color="accent"
+                [disabled]="userForm.invalid"
+              >
+                Update Profile Data
+              </button>
+            </mat-card-actions>
+          </form>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

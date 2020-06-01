@@ -1,8 +1,10 @@
 <div class="container my-4">
-  <mat-card class="my-4">
+  <mat-card class="my-2">
     <mat-card-header>
-      <mat-card-title>My Requests</mat-card-title>
-      <mat-card-subtitle>All Of My Requests and all Actions</mat-card-subtitle>
+      <mat-card-title>Incoming Requests</mat-card-title>
+      <mat-card-subtitle
+        >All Of My Incoming Requests and all Actions</mat-card-subtitle
+      >
     </mat-card-header>
     <mat-card-content>
       <mat-selection-list [multiple]="false">
@@ -25,26 +27,25 @@
             <div class="left-content">
               <button
                 class="matBtn"
-                color="warn"
                 mat-icon-button
-                aria-label="Delete Request"
-                matTooltip="Delete Request"
+                color="accent"
+                aria-label="Approve This Request"
+                matTooltip="Approve This Request"
                 matTooltipPosition="left"
-                (click)="deleteItem(request.id)"
+                (click)="approveRequest(request.id, 1)"
               >
-                <mat-icon>delete</mat-icon>
+                <mat-icon>done_outline</mat-icon>
               </button>
               <button
                 class="matBtn"
                 mat-icon-button
                 color="accent"
-                aria-label="Update Request"
-                matTooltip="Update Request"
+                aria-label="Reject This Request"
+                matTooltip="Reject This Request"
                 matTooltipPosition="left"
-                [routerLink]="['/dashboard/requests/update', request.id]"
-                routerLinkActive="router-link-active"
+                (click)="approveRequest(request.id, -1)"
               >
-                <mat-icon>settings</mat-icon>
+                <mat-icon>clear</mat-icon>
               </button>
               <button
                 class="matBtn"
@@ -53,7 +54,7 @@
                 aria-label="Request Item"
                 matTooltip="Request Item"
                 matTooltipPosition="left"
-                [routerLink]="['/dashboard/requests/view', request.id]"
+                [routerLink]="['/dashboard/increquests/view', request.id]"
                 routerLinkActive="router-link-active"
               >
                 <mat-icon>visibility</mat-icon>
