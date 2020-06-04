@@ -18,6 +18,8 @@ export const environment = {
     PUSHER_APP_SECRET: '9a040b29b43c4cbd234a',
     PUSHER_APP_CLUSTER: 'mt1',
     PUSHER_APP_SECURE: 1,
+    channel: 'ng-chat',
+    server: 'http://findme.test/api',
   },
   //Firebase Config Variables
   firebaseConfig: {

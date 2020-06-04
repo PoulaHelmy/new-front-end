@@ -27,6 +27,7 @@ export class ItemsListComponent implements OnInit, OnDestroy {
     this.itemService.getAllItems('items').subscribe((res) => {
       this.items = res['data'];
     });
+    console.log(localStorage.getItem('access_token'));
   }
   deleteItem(id) {
     this.dialogService.open(this.options);

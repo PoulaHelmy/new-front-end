@@ -6,6 +6,7 @@ import { ItemsService } from '@@core/services/items.service';
 import { Router } from '@angular/router';
 import { RequestsService } from '@@core/services/requests.service';
 import { Subscription } from 'rxjs';
+// import { PusherService } from '@@core/services/pusher.service';
 @Component({
   selector: 'app-inc-requests',
   templateUrl: './inc-requests.component.html',
@@ -25,11 +26,15 @@ export class IncRequestsComponent implements OnInit, OnDestroy {
     private snackbarService: SnackbarService,
     private reqServ: RequestsService,
     private router: Router
-  ) {}
+  ) // private pusherServ: PusherService
+  {}
   ngOnInit() {
     this.subscription1$ = this.reqServ.getAllRequests().subscribe((res) => {
       this.requests = res['data'];
     });
+    // console.log('res', this.pusherServ.channel);
+
+    // console.log('this.pusherServ.Pusher', this.pusherServ.Pusher);
   }
 
   approveRequest(id, status) {
