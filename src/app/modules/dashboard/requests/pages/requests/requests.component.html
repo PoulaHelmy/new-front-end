@@ -14,6 +14,13 @@
                 <mat-chip color="accent" *ngIf="request.status == 1" selected
                   >Request Approved</mat-chip
                 >
+                <mat-chip
+                  color="accent"
+                  [routerLink]="['/dashboard/chats/', request.id]"
+                  *ngIf="request.status == 1"
+                  selected
+                  >Chat...</mat-chip
+                >
                 <mat-chip color="warn" *ngIf="request.status == 0" selected
                   >Pending</mat-chip
                 >

@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { environment as env } from '../../../environments/environment';
 import { map, catchError } from 'rxjs/operators';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { throwError } from 'rxjs';
+
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
@@ -13,26 +14,23 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root',
 })
-export class RequestsService {
+export class NotificationsService {
   constructor(private http: HttpClient) {}
-  getAllRequests() {
+  getAllNotifictions() {
     return this.http
-      .post(`${env.apiRoot}/auth/requests/incoming`, '', httpOptions)
+      .get(`${env.apiRoot}/auth/notifications/all`, httpOptions)
       .pipe(
         map((res) => {
-          return res;
+          return res['data'];
         }),
         catchError((e) => throwError(e))
       );
-  } //end of getAllRequests
-  approveRequest(data: object) {
+  }
+  MakeNotifictionReaded(id: string) {
     return this.http
-      .post(`${env.apiRoot}/auth/requests/change/status`, data, httpOptions)
-      .pipe(
-        map((res) => {
-          return res;
-        }),
-        catchError((e) => throwError(e))
-      );
+      .get(`${env.apiRoot}/auth/notifications/markread/${id}`, httpOptions)
+      .toPromise()
+      .then()
+      .catch((e) => throwError(e));
   }
 } //end of class

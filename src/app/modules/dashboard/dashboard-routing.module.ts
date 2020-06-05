@@ -40,6 +40,13 @@ const routes: Routes = [
       ).then((m) => m.IncomingRequestsModule),
   },
   {
+    path: 'chats',
+    loadChildren: () =>
+      import('app/modules/dashboard/chats/chats.module').then(
+        (m) => m.ChatsModule
+      ),
+  },
+  {
     path: '**',
     component: NotFoundComponent,
   },

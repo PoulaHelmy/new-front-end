@@ -40,6 +40,16 @@
                         >Request Approved</mat-chip
                       >
                       <mat-chip
+                        color="accent"
+                        [routerLink]="[
+                          '/dashboard/chats/',
+                          requestDetails['id']
+                        ]"
+                        *ngIf="requestDetails['status'] == 1"
+                        selected
+                        >Chat...</mat-chip
+                      >
+                      <mat-chip
                         color="warn"
                         *ngIf="requestDetails['status'] == 0"
                         selected

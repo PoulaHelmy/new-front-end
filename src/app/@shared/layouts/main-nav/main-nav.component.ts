@@ -9,6 +9,7 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 import { FormControl } from '@angular/forms';
 
 import { ItemsService } from '@@core/services/items.service';
+import { NotificationsService } from '@@core/services/notifications.service';
 
 @Component({
   selector: 'app-main-nav',
@@ -20,7 +21,8 @@ export class MainNavComponent implements OnInit {
   userDetails;
   defImg = '../../../../assets/imgs/undraw_profile_pic_ic5t.svg';
   isDarkTheme: Observable<boolean>;
-
+  notificationsNumber = '';
+  AllNotifications = [];
   themeClass: string = 'findme-theme';
   logOutLoading = false;
   isHandset$: Observable<boolean> = this.breakpointObserver
@@ -40,7 +42,8 @@ export class MainNavComponent implements OnInit {
     private snackbar: SnackbarService,
     private overlayContainer: OverlayContainer,
     private itemServ: ItemsService,
-    private actRoute: ActivatedRoute
+    private actRoute: ActivatedRoute,
+    private notificationServ: NotificationsService
   ) {}
 
   ngOnInit(): void {
@@ -69,6 +72,25 @@ export class MainNavComponent implements OnInit {
     this.actRoute.data.subscribe((res) => {
       this.userDetails = res['item'];
     });
+    this.notificationServ.getAllNotifictions().subscribe((res) => {
+      this.notificationsNumber = res.length;
+      res.forEach((element) => {
+        let elementData = [];
+        elementData['body'] = element['data']['body'];
+        elementData['id'] = element['id'];
+        if (element['type'].includes('RequestChangeStatus')) {
+          elementData['url'] = 'requests/view/' + element['data']['request_id'];
+        }
+        if (element['type'].includes('CreateRequest')) {
+          elementData['url'] =
+            'increquests/view/' + element['data']['request_id'];
+        }
+        this.AllNotifications.push(elementData);
+      });
+    });
+  }
+  markAsReaded(id: string) {
+    this.notificationServ.MakeNotifictionReaded(id);
   }
   // toggleDarkTheme(checked: boolean) {
   //   this.themeService.setDarkTheme(checked);
