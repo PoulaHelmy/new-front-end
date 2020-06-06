@@ -32,6 +32,9 @@ export const environment = {
     appId: '1:127883493366:web:f8905a57d6b74216ec91d7',
     measurementId: 'G-RPGCK49QK1',
   },
+  azure: {
+    endpoint: 'https://findme.cognitiveservices.azure.com/face/v1.0',
+  },
 };
 
 /*
